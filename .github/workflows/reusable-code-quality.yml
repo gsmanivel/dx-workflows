@@ -28,9 +28,9 @@ jobs:
       - name: Download DX org rulesets
         run: |
           mkdir -p config/pmd config/checkstyle
-          curl -o config/pmd/ruleset.xml \
+          curl -H "Cache-Control: no-cache" -o config/pmd/ruleset.xml \
             https://raw.githubusercontent.com/gsmanivel/dx-workflows/main/config/pmd/ruleset.xml
-          curl -o config/checkstyle/checkstyle.xml \
+          curl -H "Cache-Control: no-cache" -o config/checkstyle/checkstyle.xml \
             https://raw.githubusercontent.com/gsmanivel/dx-workflows/main/config/checkstyle/checkstyle.xml
 
       - name: Run Maven verify
