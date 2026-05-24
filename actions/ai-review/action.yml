@@ -8,6 +8,9 @@ inputs:
   repo_name:
     description: 'Repository name (owner/repo)'
     required: true
+  token:
+    description: 'GitHub token'
+    required: true
 
 runs:
   using: 'node20'

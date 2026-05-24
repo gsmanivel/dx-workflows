@@ -31838,7 +31838,7 @@ const github = __nccwpck_require__(6031);
 const core = __nccwpck_require__(9683);
 
 async function run() {
-  const token = process.env.GITHUB_TOKEN;
+  const token = core.getInput('token');
   const octokit = github.getOctokit(token);
   
   const prNumber = core.getInput('pr_number');
