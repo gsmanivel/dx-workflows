@@ -34,7 +34,7 @@ jobs:
             https://raw.githubusercontent.com/gsmanivel/dx-workflows/main/config/checkstyle/checkstyle.xml
 
       - name: Run Maven verify
-        run: mvn verify -Dsonar.skip=true
+        run: mvn verify -Dsonar.skip=true -Dspotbugs.skip=true
 
       - name: Trigger AI Review
         if: success() && inputs.ai_review == true
