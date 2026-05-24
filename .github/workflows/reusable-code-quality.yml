@@ -1,0 +1,36 @@
+name: Reusable Code Quality Check
+
+on:
+  workflow_call:
+    inputs:
+      ai_review:
+        description: 'Enable AI code review'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'oracle'
+
+      - name: Run Maven verify
+        run: mvn verify -Dsonar.skip=true
+
+      - name: Trigger AI Review
+        if: success() && inputs.ai_review == true
+        uses: gsmanivel/dx-workflows/actions/ai-review@main
+        with:
+          pr_number: ${{ github.event.pull_request.number }}
+          repo_name: ${{ github.repository }}

@@ -1,0 +1,14 @@
+name: 'DX AI Review'
+description: 'Triggers the DX PR Review Agent via repository dispatch'
+
+inputs:
+  pr_number:
+    description: 'PR number to review'
+    required: true
+  repo_name:
+    description: 'Repository name (owner/repo)'
+    required: true
+
+runs:
+  using: 'github-script'
+  main: 'index.js'
