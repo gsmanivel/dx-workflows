@@ -12,11 +12,13 @@
     </module>
     <module name="NewlineAtEndOfFile"/>
 
-    <module name="TreeWalker">
+    <!-- LineLength belongs directly under Checker since Checkstyle 8.24 -->
+    <module name="LineLength">
+        <property name="max" value="120"/>
+        <property name="fileExtensions" value="java"/>
+    </module>
 
-        <module name="LineLength">
-            <property name="max" value="120"/>
-        </module>
+    <module name="TreeWalker">
         <module name="AvoidStarImport"/>
         <module name="UnusedImports"/>
         <module name="RedundantImport"/>
@@ -31,6 +33,5 @@
         <module name="SimplifyBooleanExpression"/>
         <module name="StringLiteralEquality"/>
         <module name="MissingOverride"/>
-
     </module>
 </module>
